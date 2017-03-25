@@ -11,7 +11,7 @@ module.exports = function( ceiling ) {
   // do work here
   var num = 0;
   var div = true;
-  while (true) {
+  while (!false) {
     div = true;
     num += ceiling;
     for (var i = 2; i < ceiling; i++) {
