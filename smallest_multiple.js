@@ -9,37 +9,21 @@
  */
 module.exports = function( ceiling ) {
   // do work here
-  function gcd(min, max) {
-    var div = 0;
-    while (min % 2 === 0 && max % 2 === 0) {
-      div++;
-      min /= 2;
-      max /= 2;
-    }
-    while (min !== max) {
-      if (min % 2 === 0) {
-        min /= 2;
-      } else if (max % 2 === 0) {
-        max /= 2;
-      } else if (min > max) {
-        min = (min - max) / 2;
-      } else {
-        max = (max - min) / 2;
+  var num = 0;
+  var div = true;
+  while (true) {
+    div = true;
+    num += ceiling;
+    for (var i = 2; i < ceiling; i++) {
+      if (num % i !== 0) {
+        div = false;
+        break;
       }
     }
-    return min * Math.pow(2, div);
+    if (div === true) {
+      break;
+    }
   }
 
-  function lcm(min, max) {
-    var gNum = gcd(min, max);
-    return min * max / gNum;
-  }
-
-  var lNum = 1;
-
-  for (var i = 2; i < ceiling; i++) {
-    lNum = lcm(lNum, i);
-  }
-
-  return lNum;
+  return num;
 };
